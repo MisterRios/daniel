@@ -32,3 +32,31 @@ function vack() {
     echo "Please enter a search term"
   fi
 }
+
+function gpto() {
+    local branch=$(git symbolic-ref --short HEAD)
+    git push --set-upstream origin $branch
+}
+
+alias gepetto="gpto"
+
+function shell_plus() {
+    if [ -f ./manage.py ]; then
+        ./manage.py 'shell_plus'
+    else
+        ..; ./manage.py shell_plus
+    fi
+}
+
+function gcos () {
+  if [[ "$1" ]]; then
+      local branch=$(git branch | grep "$1" | tail -1 | xargs)
+      git checkout $branch
+  else
+      echo "no branch found"
+  fi
+}
+
+function glast () {
+    git log -p -1
+}
