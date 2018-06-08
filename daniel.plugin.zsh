@@ -56,7 +56,3 @@ function gcos () {
       echo "no branch found"
   fi
 }
-
-function glast () {
-    git log -p -1
-}
