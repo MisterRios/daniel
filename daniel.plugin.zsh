@@ -56,3 +56,12 @@ function gcos () {
       echo "no branch found"
   fi
 }
+
+function vfuz() {
+  term=$(find . -type f | fzy)
+  if [[ "$term" ]]; then
+    vim $term
+  else
+    echo "Please enter a search term"
+  fi
+}
