@@ -73,11 +73,28 @@ function gcos () {
   fi
 }
 
-function vfuz() {
-  term=$(find . -type f | fzy)
+function vz() {
+  term=$(find . -type f -not -path "./build/*" -not -path "./htmlcov/*" -not -path "./node_modules/*" -not -path "./.mypy_cache/*" -not -path "./.git/*" -not -path "./media/*" | fzf)
   if [[ "$term" ]]; then
     vim $term
   else
     echo "Please enter a search term"
   fi
+}
+
+function vigi() {
+    local files=$(git status -s)
+  if $files; then
+      echo $files
+  else
+    echo "No files to edit"
+  fi
+}
+
+function delmigrations() {
+    $(git status -s | grep '?? ' | grep '/migrations/') |
+    while IFS= read -r status filename; do
+        # rm ${file:3}
+        echo "deleted $status $filename"
+    done
 }
