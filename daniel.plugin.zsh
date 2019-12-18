@@ -25,9 +25,25 @@ function glh() {
     fi
 }
 
-function vack() {
+function agv() {
   if [[ "$1" ]]; then
-    vim -p $(ack -l "$1")
+    nvim -p $(ag -l "$1")
+  else
+    echo "Please enter a search term"
+  fi
+}
+
+function agvp() {
+  if [[ "$1" ]]; then
+    nvim -p $(ag -G '.*\.py' -l "$1")
+  else
+    echo "Please enter a search term"
+  fi
+}
+
+function agvpp() {
+  if [[ "$1" ]]; then
+    nvim -p $(ag -G '.*\.py' --ignore-dir=tests -l "$1")
   else
     echo "Please enter a search term"
   fi
