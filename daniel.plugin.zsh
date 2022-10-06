@@ -33,6 +33,10 @@ function agv() {
   fi
 }
 
+function agvb() {
+  nvim -p $(ag -l "breakpoint")
+}
+
 function agvp() {
   if [[ "$1" ]]; then
     nvim -p $(ag -G '.*\.py' -l "$1")
