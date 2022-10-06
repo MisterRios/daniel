@@ -85,3 +85,13 @@ function vfuz() {
     echo "Please enter a search term"
   fi
 }
+
+
+function vpnend() {
+  for line in $(openvpn3 sessions-list | grep -Po 'Path: \K[^ ]*')
+  do
+    echo "ending session:"
+    echo $line
+    openvpn3 session-manage  --session-path $line --disconnect
+  done
+}
