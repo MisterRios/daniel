@@ -61,6 +61,22 @@ function agvpp() {
   fi
 }
 
+function agc() {
+  if [[ "$1" ]]; then
+    ag -w -G '.*\.py' --ignore-dir=tests "class $1"
+  else
+    echo "Please enter a search term"
+  fi
+}
+
+function agd() {
+  if [[ "$1" ]]; then
+    ag -w -G '.*\.py' --ignore-dir=tests "def $1"
+  else
+    echo "Please enter a search term"
+  fi
+}
+
 function gpto() {
     local branch=$(git symbolic-ref --short HEAD)
     git push --set-upstream origin $branch
