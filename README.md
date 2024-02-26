@@ -4,7 +4,7 @@ plugin for oh-my-zsh with random, oft-used commands
 These are commands that I often use, which are sometimes too complicated to easily remember:
 
 ## glogs
-glogs does a word search through the commit messages in the repository
+glogs does a word search through the commit messages in the repository, and returns the relevant commits with the search term highlighted
 `git log --color=always --all --grep=<search_term>`
 
 *Usage:*
@@ -23,13 +23,13 @@ This command does not work for single lines, though
 $ glh 42-57 memory_files.py
 ```
 
-## vack
-vack searches files through `ack` and opens the results in vim as separate tabs
-`vim -p $(ack -l <search_term>)`
+## agv
+agv searches files using the Silver Searcher `ag` and opens the results in vim as separate tabs
+`vim -p $(ag -l <search_term>)`
 
 *Usage:*
 ```
-vack donuts
+agv donuts
 ```
 
 ## gpto
@@ -37,6 +37,7 @@ gpto, also aliased to gepetto, takes the current branch and create pushes it to 
 `local branch=$(git symbolic-ref --short HEAD)`
 combined with
 `git push --set-upstream origin $branch`
+#### Deprecated- use gpsup in oh-my-zsh
 
 *Usage:*
 ```
