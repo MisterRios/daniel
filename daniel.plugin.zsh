@@ -27,7 +27,7 @@ function glh() {
 
 function agv() {
   if [[ "$1" ]]; then
-    vim -p $(ag -l "$1")
+    nvim -p $(ag -l "$1")
   else
     echo "Please enter a search term"
   fi
@@ -35,19 +35,19 @@ function agv() {
 
 function agvg() {
   if [[ "$1" ]]; then
-    vim -p $(ag -l "$1" .github)
+    nvim -p $(ag -l "$1" .github)
   else
     echo "Please enter a search term"
   fi
 }
 
 function agvb() {
-  vim -p $(ag -l "breakpoint")
+  nvim -p $(ag -l "breakpoint")
 }
 
 function agvp() {
   if [[ "$1" ]]; then
-    vim -p $(ag -G '.*\.py' -l "$1")
+    nvim -p $(ag -G '.*\.py' -l "$1")
   else
     echo "Please enter a search term"
   fi
@@ -55,7 +55,7 @@ function agvp() {
 
 function agvpp() {
   if [[ "$1" ]]; then
-    vim -p $(ag -G '.*\.py' --ignore-dir=tests -l "$1")
+    nvim -p $(ag -G '.*\.py' --ignore-dir=tests -l "$1")
   else
     echo "Please enter a search term"
   fi
@@ -104,7 +104,7 @@ function gcos () {
 function vfuz() {
   term=$(find . -type f | fzy)
   if [[ "$term" ]]; then
-    vim $term
+    nvim $term
   else
     echo "Please enter a search term"
   fi
