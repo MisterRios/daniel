@@ -63,7 +63,15 @@ function agvpp() {
 
 function agc() {
   if [[ "$1" ]]; then
-    ag -w -G '.*\.py' --ignore-dir=tests "class $1"
+   ag -w -G '.*\.py' --ignore-dir=tests "class $1"
+  else
+    echo "Please enter a search term"
+  fi
+}
+
+function agct() {
+  if [[ "$1" ]]; then
+    ag -w -G '.*\.py' "class $1" tests
   else
     echo "Please enter a search term"
   fi
@@ -72,6 +80,24 @@ function agc() {
 function agd() {
   if [[ "$1" ]]; then
     ag -w -G '.*\.py' --ignore-dir=tests "def $1"
+  else
+    echo "Please enter a search term"
+  fi
+}
+
+function agproj() {
+  if [[ "$1" ]]; then
+    cdproject;echo "searching project for $1";ag "$1";cd -
+  else
+    echo "Please enter a search term"
+  fi
+}
+
+
+# vim opening for files found with fd using a path
+function fdpv() {
+  if [[ "$1" ]]; then
+    nvim -p $(fd -p "$1")
   else
     echo "Please enter a search term"
   fi
@@ -119,3 +145,9 @@ function vpnend() {
     openvpn3 session-manage  --session-path $line --disconnect
   done
 }
+
+# To allow greeting plugin to work on mac
+function shuf() {
+  awk 'BEGIN {srand(); OFMT="%.17f"} {print rand(), $0}' "$@" |
+               sort -k1,1n | cut -d ' ' -f2-;
+  }
