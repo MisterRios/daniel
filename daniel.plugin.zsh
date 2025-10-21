@@ -127,8 +127,8 @@ function gcos () {
   fi
 }
 
-function vfuz() {
-  term=$(find . -type f | fzy)
+function vfz() {
+  term=$(find . -type f | fzf)
   if [[ "$term" ]]; then
     nvim $term
   else
